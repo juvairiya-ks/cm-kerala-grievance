@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About | CM Kerala Grievance Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+  </head>
+  <body>
+    {% include "public_header.html" %}
+    <main class="content-page">
+      <p class="eyebrow">ABOUT US</p>
+      <h1>A clearer way to manage public-service concerns.</h1>
+      <p class="page-lead">This independent initiative demonstrates a transparent digital journey for submitting, reviewing, assigning, and tracking public-service grievances.</p>
+      <div class="about-grid">
+        <section class="content-card about-card">
+          <span class="about-card-label">PURPOSE</span>
+          <h2>Make the process easier to follow.</h2>
+          <p>Provide a single place to record a concern, receive a reference number, and follow its progress through review and action.</p>
+        </section>
+        <section class="content-card about-card">
+          <span class="about-card-label">VISION</span>
+          <h2>A responsive, accountable service journey.</h2>
+          <p>Demonstrate how clear ownership and visible status history can help people understand what happens after they raise a concern.</p>
+        </section>
+        <section class="content-card about-card">
+          <span class="about-card-label">MISSION</span>
+          <h2>Connect submission, review, and response.</h2>
+          <p>Show a consistent workflow for citizens, CMO reviewers, and department officers, with a human decision-maker responsible for outcomes.</p>
+        </section>
+        <section class="content-card about-card">
+          <span class="about-card-label">OBJECTIVES</span>
+          <h2>Build trust through traceable steps.</h2>
+          <ul>
+            <li>Issue a reference number for each grievance.</li>
+            <li>Record status changes with timestamps and responsible users.</li>
+            <li>Support department assignment and action-report review.</li>
+            <li>Keep optional AI suggestions advisory and subject to human review.</li>
+          </ul>
+        </section>
+      </div>
+      <div class="project-notice"><strong>Service information</strong><span>This demonstration is not an official Government of Kerala service. Do not enter real personal information or use it for urgent or official complaints.</span></div>
+    </main>
+    {% include "public_footer.html" %}
+  </body>
+</html>

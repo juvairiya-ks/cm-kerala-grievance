@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Submit a grievance-service request and follow its status.">
+    <title>Submit grievance | CM Kerala Grievance Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+    <script src="{{ url_for('static', path='/js/grievances.js') }}" defer></script>
+  </head>
+  <body class="auth-page" data-auth-page="grievance-form">
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="CM Kerala Grievance Portal home">
+        <span class="brand-mark" aria-hidden="true">K</span>
+        <span>CM Kerala<span class="brand-subtitle">Public Grievance Portal</span></span>
+      </a>
+      <a class="button button-outline" href="/citizen/dashboard">Dashboard</a>
+    </header>
+    <main class="auth-main">
+      <section class="auth-card grievance-form-card" aria-labelledby="form-title">
+        <p class="eyebrow">CITIZEN PORTAL</p>
+        <h1 id="form-title">Submit a grievance</h1>
+        <p class="auth-intro">Share the issue clearly. You’ll receive a reference number after submission.</p>
+        <form id="grievance-form" class="auth-form">
+          <label for="district">District</label>
+          <select id="district" name="district" required><option value="">Choose district</option></select>
+          <label for="category">Category</label>
+          <select id="category" name="category" required><option value="">Choose category</option></select>
+          <label for="subject">Subject</label>
+          <input id="subject" name="subject" type="text" minlength="5" maxlength="150" required>
+          <label for="description">Describe the issue</label>
+          <textarea id="description" name="description" minlength="20" maxlength="5000" rows="6" required></textarea>
+          <div class="ai-assistant-box">
+            <div>
+              <p class="eyebrow">OPTIONAL ASSISTANT</p>
+              <strong>Get reviewable suggestions</strong>
+              <p id="ai-availability" class="ai-privacy-note">Checking whether an AI provider is configured…</p>
+            </div>
+            <label id="ai-consent-row" class="ai-consent" hidden>
+              <input id="ai-consent" type="checkbox">
+              <span>I agree to send this subject and description to the configured external AI provider for analysis.</span>
+            </label>
+            <button id="analyze-grievance" class="button button-outline" type="button" disabled>Analyze complaint</button>
+            <div id="ai-suggestion" class="ai-suggestion" hidden aria-live="polite">
+              <div class="ai-suggestion-heading">
+                <strong>Suggestions for your review</strong>
+                <span id="ai-source-label" class="ai-source-label"></span>
+              </div>
+              <div id="ai-suggestion-details" class="ai-suggestion-details"></div>
+              <p id="ai-suggestion-notice" class="field-hint"></p>
+              <button id="apply-ai-category" class="button button-outline" type="button">Use suggested category</button>
+            </div>
+            <input id="ai-suggestion-id" name="ai_suggestion_id" type="hidden">
+          </div>
+          <label for="attachment">Supporting document or image <span class="optional-label">(optional)</span></label>
+          <input id="attachment" name="attachment" type="file" accept=".pdf,.png,.jpg,.jpeg,application/pdf,image/png,image/jpeg">
+          <small class="field-hint">PDF, PNG, JPG or JPEG · Maximum 5 MB</small>
+          <p id="grievance-message" class="form-message" role="status" aria-live="polite"></p>
+          <button class="button button-primary auth-submit" type="submit">Submit grievance</button>
+        </form>
+        <div id="submission-result" class="submission-result" hidden>
+          <strong>Submission received</strong>
+          <span>Your reference number: <code id="submission-reference"></code></span>
+          <a id="submission-track-link" href="/citizen/track">View grievance status</a>
+        </div>
+        <p class="auth-disclaimer">Independent demonstration service. Not an official Government of Kerala service. Use fictional information only.</p>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <span>CM Kerala Grievance Portal</span>
+      <span>Independent demonstration · Not an official government service</span>
+    </footer>
+  </body>
+</html>

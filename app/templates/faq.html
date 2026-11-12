@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FAQ | CM Kerala Grievance Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+  </head>
+  <body>
+    {% include "public_header.html" %}
+    <main class="content-page">
+      <p class="eyebrow">HELP &amp; ANSWERS</p>
+      <h1>Frequently asked questions</h1>
+      <section class="faq-list">
+        <details><summary>How do I submit a grievance?</summary><p>Create a citizen account, sign in, and use Submit a grievance. A reference number is generated after submission.</p></details>
+        <details><summary>How can I check progress?</summary><p>Sign in with the same account and open your dashboard, or use Track a grievance with your reference number.</p></details>
+        <details><summary>How do officer accounts get created?</summary><p>Staff accounts are provisioned by the local project operator. Officers do not create accounts through public registration.</p></details>
+        <details><summary>Does the AI assistant decide the outcome?</summary><p>No. It provides advisory suggestions that need human review. External analysis is only enabled when configured and the citizen consents.</p></details>
+        <details><summary>Will I receive email or SMS updates?</summary><p>No. Updates are shown in the signed-in portal; email and SMS notifications are not enabled.</p></details>
+        <details><summary>Is this an official government service?</summary><p>No. This is an independent demonstration and is not affiliated with or operated by the Government of Kerala. Do not submit actual complaints, sensitive data, or urgent requests.</p></details>
+      </section>
+    </main>
+    {% include "public_footer.html" %}
+  </body>
+</html>

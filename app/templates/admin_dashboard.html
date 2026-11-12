@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="CMO workspace for reviewing and routing grievance-service requests.">
+    <title>CMO dashboard | CM Kerala Grievance Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+    <script src="{{ url_for('static', path='/js/staff.js') }}" defer></script>
+  </head>
+  <body class="staff-page" data-staff-page="admin">
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="CM Kerala Grievance Portal home">
+        <span class="brand-mark" aria-hidden="true">K</span>
+        <span>CM Kerala<span class="brand-subtitle">CMO administration</span></span>
+      </a>
+      <button class="button button-outline" type="button" data-logout>Sign out</button>
+    </header>
+    <main class="staff-main">
+      <div class="staff-heading">
+        <div><p class="eyebrow">CHIEF MINISTER'S OFFICE</p><h1>Grievance overview</h1></div>
+        <p id="staff-user" class="staff-user"></p>
+      </div>
+      <p id="staff-message" class="dashboard-message" role="status" aria-live="polite"></p>
+      <section id="admin-stats" class="summary-grid staff-stats" aria-label="Grievance counts">
+        <article class="summary-card"><span>Total grievances</span><strong id="admin-total">—</strong></article>
+        <article class="summary-card"><span>Pending</span><strong id="admin-pending">—</strong></article>
+        <article class="summary-card"><span>Resolved</span><strong id="admin-resolved">—</strong></article>
+        <article class="summary-card"><span>Overdue · 14+ days</span><strong id="admin-overdue">—</strong></article>
+      </section>
+      <section class="staff-section">
+        <h2>Grievances</h2>
+        <form id="admin-filters" class="filter-row">
+          <label>District<select name="district" id="filter-district"><option value="">All districts</option></select></label>
+          <label>Category<select name="category" id="filter-category"><option value="">All categories</option></select></label>
+          <label>Priority<select name="priority"><option value="">All priorities</option><option>Low</option><option>Medium</option><option>High</option></select></label>
+          <label>Status<select name="status"><option value="">All statuses</option><option>Submitted</option><option>Under Review</option><option>In Progress</option><option>Resolved</option><option>Reopened</option></select></label>
+          <button class="button button-primary" type="submit">Apply filters</button>
+          <button class="button button-outline" type="reset">Clear</button>
+        </form>
+        <div class="table-wrap">
+          <table class="staff-table">
+            <thead><tr><th>Reference / Subject</th><th>District</th><th>Priority</th><th>Status</th><th>Department</th><th></th></tr></thead>
+            <tbody id="admin-grievances"><tr><td colspan="6">Loading grievances…</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+      <section id="admin-detail" class="staff-section detail-panel" hidden>
+        <div class="section-heading"><div><p class="eyebrow">CASE REVIEW</p><h2 id="detail-subject"></h2></div><button id="close-detail" class="button button-outline" type="button">Close</button></div>
+        <div id="detail-summary" class="grievance-details-grid"></div>
+        <p id="detail-description" class="track-description"></p>
+        <div id="admin-ai-suggestion" class="ai-suggestion" hidden></div>
+        <div class="report-actions case-actions">
+          <button id="start-review" class="button button-primary" type="button" hidden>Start CMO review</button>
+          <button id="reopen-grievance" class="button button-outline" type="button" hidden>Reopen resolved grievance</button>
+          <button id="escalate-grievance" class="button button-outline" type="button">Escalate delayed grievance</button>
+        </div>
+        <div class="staff-two-column">
+          <form id="assign-form" class="staff-form">
+            <h3>Assign to department</h3>
+            <label for="assign-department">Department</label><select id="assign-department" name="department_id" required></select>
+            <label for="assign-officer">Officer (optional)</label><select id="assign-officer" name="officer_id"><option value="">Any officer in department</option></select>
+            <label for="assign-remark">Internal note (optional)</label><textarea id="assign-remark" name="remark" rows="3" maxlength="1000"></textarea>
+            <p id="assignment-hint" class="field-hint" role="status"></p>
+            <button class="button button-primary" type="submit">Assign grievance</button>
+          </form>
+          <form id="remark-form" class="staff-form">
+            <h3>Add internal CMO remark</h3>
+            <label for="internal-remark">Remark</label><textarea id="internal-remark" name="remark" rows="4" maxlength="2000" required></textarea>
+            <button class="button button-primary" type="submit">Save internal remark</button>
+          </form>
+        </div>
+        <div class="staff-two-column">
+          <div><h3>Status history</h3><ol id="admin-history" class="history-list"></ol></div>
+          <div><h3>Internal remarks</h3><ul id="admin-remarks" class="internal-remark-list"></ul></div>
+        </div>
+        <div><h3>Attachments</h3><div id="admin-attachments" class="attachment-list"></div></div>
+        <div><h3>Department action reports</h3><div id="admin-reports" class="report-list"></div></div>
+        <div><h3>Escalation history</h3><ul id="admin-escalations" class="internal-remark-list"></ul></div>
+      </section>
+      <section class="staff-section analytics-grid">
+        <div><h2>By district</h2><div id="district-stats" class="compact-table"></div></div>
+        <div><h2>By department</h2><div id="department-stats" class="compact-table"></div></div>
+      </section>
+      <p class="project-notice"><strong>Service information</strong><span>Independent demonstration · Not an official Government of Kerala service. Use fictional accounts and data only.</span></p>
+    </main>
+    <footer class="site-footer"><span>CM Kerala Grievance Portal</span><span>Independent demonstration · Not an official government service</span></footer>
+  </body>
+</html>

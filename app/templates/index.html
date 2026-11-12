@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Submit a concern, follow its progress, and review updates through an independent grievance-service demonstration.">
+    <title>CM Kerala Grievance Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="CM Kerala Grievance Portal home">
+        <span class="brand-mark" aria-hidden="true">K</span>
+        <span>CM Kerala<span class="brand-subtitle">Public Grievance Portal</span></span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="/how-it-works">How it works</a>
+        <a href="/departments">Departments</a>
+        <a href="/about">About</a>
+        <a href="/faq">FAQs</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <a class="button button-outline" href="/login">Sign in</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="status-dot"></span> CITIZEN GRIEVANCE SERVICES</p>
+          <h1>Your concern matters.<br><span>We’re here to listen.</span></h1>
+          <p class="hero-description">
+            Submit a concern, follow each review milestone, and see updates from the
+            teams handling your request.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="/register">Submit a grievance <span aria-hidden="true">→</span></a>
+            <a class="button button-text" href="/citizen/track">Track a grievance</a>
+          </div>
+          <p class="reference-note">You’ll receive a reference number to check your grievance status.</p>
+        </div>
+        <aside class="hero-card" aria-label="Grievance process overview">
+          <div class="card-topline"><span>YOUR REQUEST, STEP BY STEP</span><span class="card-icon" aria-hidden="true">↗</span></div>
+          <h2>From submission<br>to resolution</h2>
+          <ol class="process-list">
+            <li><span class="step-number">01</span><span><strong>Submit your concern</strong><small>Describe the issue and receive a reference</small></span></li>
+            <li><span class="step-number">02</span><span><strong>Review and action</strong><small>The CMO routes it to the relevant department</small></span></li>
+            <li><span class="step-number">03</span><span><strong>Track progress</strong><small>See status updates in your account</small></span></li>
+          </ol>
+          <p class="card-footnote">Transparent updates at every step.</p>
+        </aside>
+        <div class="hero-decoration" aria-hidden="true"></div>
+      </section>
+
+      <section class="info-strip" id="how-it-works">
+        <div><span class="info-index">01</span><p><strong>Submit your concern</strong><br>Describe the issue and receive a reference number.</p></div>
+        <div><span class="info-index">02</span><p><strong>Reviewed by the CMO</strong><br>Your submission is reviewed and routed for action.</p></div>
+        <div><span class="info-index">03</span><p><strong>Stay informed</strong><br>Check status updates and the action taken.</p></div>
+      </section>
+
+      <section class="home-stats" aria-labelledby="stats-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">PORTAL OVERVIEW</p><h2 id="stats-title">Service activity</h2></div>
+          <span class="stats-updated">Live totals from this system</span>
+        </div>
+        <div class="stats-grid">
+          <article class="home-stat-card"><span>Total grievances</span><strong>{{ stats.total }}</strong></article>
+          <article class="home-stat-card"><span>In progress</span><strong>{{ stats.in_progress }}</strong></article>
+          <article class="home-stat-card"><span>Resolved</span><strong>{{ stats.resolved }}</strong></article>
+        </div>
+        <p class="field-hint">Counts reflect records currently stored in this demonstration system.</p>
+      </section>
+
+      <section class="featured-departments" id="departments" aria-labelledby="featured-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">PUBLIC SERVICES</p><h2 id="featured-title">Featured departments</h2></div>
+          <a class="button button-outline" href="/departments">View all departments</a>
+        </div>
+        <div class="department-grid">
+          {% for department in featured_departments %}
+          <article class="content-card featured-department-card">
+            <span class="featured-marker" aria-hidden="true">✦</span>
+            <h3>{{ department.name }}</h3>
+            <p>{{ department.description }}</p>
+          </article>
+          {% endfor %}
+        </div>
+      </section>
+      <div id="about" class="project-notice">
+        <strong>Service information</strong>
+        <span>This independent demonstration is not an official Government of Kerala service. Do not submit real personal, sensitive, urgent, or official grievance information.</span>
+      </div>
+      <div class="support-strip"><span>Need help with this demonstration?</span><a href="/contact">Contact the project team <span aria-hidden="true">→</span></a></div>
+    </main>
+
+    <footer class="site-footer">
+      <span>CM Kerala Grievance Portal</span>
+      <span>Independent demonstration · Not an official government service</span>
+    </footer>
+  </body>
+</html>

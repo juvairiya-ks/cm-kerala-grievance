@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>How it works | CM Kerala Grievance Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+  </head>
+  <body>
+    {% include "public_header.html" %}
+    <main class="content-page">
+      <p class="eyebrow">THE GRIEVANCE LIFECYCLE</p>
+      <h1>Every step is traceable.</h1>
+      <p class="page-lead">Each status change is recorded with its timestamp and responsible account so progress is easy to follow.</p>
+      <ol class="lifecycle-list">
+        <li><strong>Submitted</strong><span>The citizen receives a reference number and can track the case.</span></li>
+        <li><strong>Under Review</strong><span>The CMO reviews the grievance and its supporting information.</span></li>
+        <li><strong>In Progress</strong><span>The CMO forwards it to a department; its officer investigates and updates progress.</span></li>
+        <li><strong>Action report reviewed</strong><span>The department submits its action-taken report for CMO review.</span></li>
+        <li><strong>Resolved or reopened</strong><span>The CMO accepts the response to resolve the case, or returns/reopens it for further action.</span></li>
+      </ol>
+      <p class="content-card">Citizens can view updates by signing in and opening their dashboard or tracking a reference number. Email and SMS notifications are not enabled.</p>
+    </main>
+    {% include "public_footer.html" %}
+  </body>
+</html>

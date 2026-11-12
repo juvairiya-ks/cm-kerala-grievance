@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Create a citizen account to submit and track grievance-service requests.">
+    <title>Create account | CM Kerala Grievance Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+    <script src="{{ url_for('static', path='/js/auth.js') }}" defer></script>
+  </head>
+  <body class="auth-page">
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="CM Kerala Grievance Portal home">
+        <span class="brand-mark" aria-hidden="true">K</span>
+        <span>CM Kerala<span class="brand-subtitle">Public Grievance Portal</span></span>
+      </a>
+      <a class="button button-outline" href="/">Back to home</a>
+    </header>
+    <main class="auth-main">
+      <section class="auth-card" aria-labelledby="auth-title">
+        <p class="eyebrow">CITIZEN PORTAL</p>
+        <h1 id="auth-title">Create your account</h1>
+        <p class="auth-intro">Use your account to submit concerns and follow their progress.</p>
+        <form id="register-form" class="auth-form">
+          <label for="name">Full name</label>
+          <input id="name" name="name" type="text" autocomplete="name" minlength="2" maxlength="100" required>
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required>
+          <label for="mobile">Mobile number</label>
+          <input id="mobile" name="mobile" type="tel" inputmode="numeric" autocomplete="tel" minlength="10" maxlength="15" pattern="[0-9]{10,15}" required>
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="128" aria-describedby="password-hint" required>
+          <small id="password-hint" class="field-hint">Use at least 8 characters.</small>
+          <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+          <button class="button button-primary auth-submit" type="submit">Create account</button>
+        </form>
+        <p class="auth-switch">Already registered? <a href="/login">Sign in</a></p>
+        <p class="auth-disclaimer">Independent demonstration service. Not an official Government of Kerala service. Use fictional information only.</p>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <span>CM Kerala Grievance Portal</span>
+      <span>Independent demonstration · Not an official government service</span>
+    </footer>
+  </body>
+</html>

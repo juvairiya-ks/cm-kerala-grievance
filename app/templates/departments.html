@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Departments | CM Kerala Grievance Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+  </head>
+  <body>
+    {% include "public_header.html" %}
+    <main class="content-page">
+      <p class="eyebrow">PUBLIC SERVICES</p>
+      <h1>Departments and public services</h1>
+      <p class="page-lead">These sample departments are used for demonstration. The CMO selects the responsible department during review.</p>
+      <div class="department-grid">
+        {% for department in departments %}
+        <article class="content-card">
+          <h2>{{ department.name }}</h2>
+          <p>{{ department.description }}</p>
+        </article>
+        {% endfor %}
+      </div>
+      <p class="field-hint">The list is illustrative and does not represent an official directory.</p>
+    </main>
+    {% include "public_footer.html" %}
+  </body>
+</html>
