@@ -5,16 +5,26 @@ from app.database import get_connection
 
 
 def seed_demo_accounts() -> None:
-    password = os.getenv("DEMO_PASSWORD")
-    if not password or len(password) < 8:
-        print("DEMO_PASSWORD not set (min 8 chars); demo accounts skipped.")
-        return
-
     with get_connection() as connection:
         department = connection.execute(
             "SELECT id FROM departments ORDER BY id LIMIT 1"
         ).fetchone()
         department_id = department["id"] if department else None
+
+        if department_id is not None:
+            connection.execute(
+                """
+                UPDATE users SET department_id = ?
+                WHERE email = ? AND role = 'officer' AND department_id IS NULL
+                """,
+                (department_id, "officer.demo@example.com"),
+            )
+
+        password = os.getenv("DEMO_PASSWORD")
+        if not password or len(password) < 8:
+            print("DEMO_PASSWORD not set (min 8 chars); new demo accounts skipped.")
+            return
+
         pw_hash = hash_password(password)
 
         accounts = [
