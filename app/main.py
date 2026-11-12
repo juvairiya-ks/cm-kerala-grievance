@@ -11,6 +11,7 @@ from app.ai_assistant import router as ai_router
 from app.database import PROJECT_ROOT, get_connection, initialize_database
 from app.grievances import router as grievances_router
 from app.public_services import router as public_services_router
+from app.demo_seed import seed_demo_accounts
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -34,6 +35,9 @@ app.include_router(public_services_router)
 @app.on_event("startup")
 async def startup_event():
     initialize_database()
+    seed_demo_accounts()
+    
+    
 
 
 @app.get("/", include_in_schema=False)
